@@ -1,0 +1,65 @@
+.flex {
+    display: flex;
+}
+
+.center-center {
+    align-items: center;
+    justify-content: center;
+}
+
+
+.gap-2em {
+    gap: 2em;
+}
+
+.sec-footer {
+   width: 80%;
+    height: 100px;
+}
+.wrap{
+    flex-direction: column;
+}
+.space-between {
+    align-items: center;
+    justify-content: space-between;
+}
+.space-around {
+    align-items: center;
+    justify-content: space-around;
+}
+.full-width{
+    width: 100%;
+}
+.half-width{
+    width: 50%;
+}
+.container{
+    height: 100px;
+    text-align: end;
+}
+.text-center{
+    text-align: center;
+}
+.p-4{
+    padding: 4em;
+}
+.bg-grey{
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.fw-bold{
+font-weight: bold;
+}
+.text-uppercase{
+text-transform: uppercase;
+} 
+
+.mb-4{
+margin-bottom: 4em;
+}
+
+.icon{
+    font-size: 20px;
+}
+
+

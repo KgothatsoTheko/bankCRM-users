@@ -1,0 +1,36 @@
+<app-toolbar></app-toolbar>
+<div class=" flex center-center ">
+            <div class="container gap-1em full-height">
+                <img class="full-width full-height " src="../../../assets/images/desktop/LogIn.jpeg" alt="">
+            </div>
+            <div class="container flex center-center gap-1em full-height">
+                <form [formGroup]="logInForm" (ngSubmit)="submit()" class="full-width flex full-height column">
+                    <h1><b>Sign-in to the Online BankConnect</b></h1>
+                    <br>
+                    <br>
+                    <div class=" flex column gap-1em">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Email Address</mat-label>
+                            <input matInput placeholder="e.g 8765430987087" formControlName="email">
+                            <mat-error *ngIf=" logInForm.controls['email'].invalid">
+                                <p  class="flex gap--1em">Email Address field is <strong> Invalid</strong> </p>
+                            </mat-error>
+                        </mat-form-field>                  
+                        <mat-form-field appearance="fill">
+                            <mat-label>Password</mat-label>
+                            <input matInput placeholder="Enter your password" formControlName="password">
+                            <mat-error>
+                                <p  class="flex gap--1em">Password field is <strong> Invalid</strong> </p>
+                            </mat-error>
+                        </mat-form-field>
+                        
+                    </div>
+                    <div class="flex space-center ">
+                        <mat-checkbox >Remember Me?</mat-checkbox>
+                        <button mat-raised-button  color="warn" (click)="submit()" >Sign-in</button>
+                    </div>
+                </form>
+            </div>
+ </div>
+ <app-footer></app-footer>
+        

@@ -1,0 +1,61 @@
+<app-toolbar></app-toolbar>
+<div class=" flex">
+    <div class="container flex center-center gap-1em full-height full-width row">
+        <h1 class="flex gap-3em">Create Your Account Here</h1>
+        <img class="pic flex center-center full-width" src="../../../assets/images/bg-sign.jpeg" alt="">
+    </div>
+    <div class="container flex center-center gap-1em">
+        <form [formGroup]="signInForm" (ngSubmit)="submit()" class="full-width">
+            
+        <p><b>Your Journey with BankConnect Starts now</b></p>
+        <br>
+        
+            <div class=" flex column gap-1em">
+                <mat-form-field appearance="fill">
+                    <mat-label>SA ID Number</mat-label>
+                    <input matInput placeholder="e.g 8765430987087" formControlName="idNo">
+                    <mat-error *ngIf="signInForm.controls['idNo'].hasError">
+                        <p class="flex gap-1em">ID Number field is <strong>Invalid</strong></p>
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="fill">
+                    <mat-label>Cellphone Number</mat-label>
+                    <input matInput placeholder="e.g 0712345679" formControlName="contact">
+                    <mat-error *ngIf="signInForm.controls['contact'].invalid && signInForm.controls['contact'].hasError">
+                        <p class="flex gap-1em">Cellphone Number is<strong>Invalid</strong></p>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Enter your email address</mat-label>
+                    <input matInput placeholder="pat@example.com" formControlName="email">
+                    <mat-error *ngIf="signInForm.controls['email'].invalid && signInForm.controls['email'].hasError">
+                        <p class="flex gap-1em">Email field is<strong>Invalid</strong></p>
+                    </mat-error>
+                </mat-form-field>
+               <div class="flex gap-1em full-width">
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Create a Pin Code</mat-label>
+                    <input matInput placeholder="e.g 1234,0000" formControlName="pin">
+                    <mat-error *ngIf="signInForm.controls['pin'].invalid && signInForm.controls['pin'].hasError">
+                        <p class="flex gap-1em"> Pin is<strong>Invalid</strong></p>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Confirm your Pin Code</mat-label>
+                    <input matInput placeholder="*******" formControlName="pinConfirm">
+                    <mat-error *ngIf="signInForm.controls['pinConfirm'].value != signInForm.controls['pin'].value">
+                        <p class="flex gap-1em"> Pin doesnt <strong>Match</strong></p>
+                    </mat-error>
+                </mat-form-field>
+               </div>
+            </div>
+            <div class="flex space-center ">
+                <mat-checkbox >Remember Me?
+                </mat-checkbox>
+                <button mat-raised-button color="warn" (click)="submit()">Sign-in</button>
+            </div>
+        </form>
+    </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,83 @@
+.row{
+    flex-direction: row;
+}
+.gap--1em{
+    gap: -1em;
+}
+.login-container {
+   width: 900px;
+}
+.main-container {
+   height: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.container {
+    width: 80%;
+    height: 80%;
+    margin: 60px;
+}
+.main-sec{
+    width: 80%;
+   border-radius: 50px;
+    background-color: aliceblue;
+}
+.column {
+    flex-direction: column;
+}
+
+
+.full-height {
+    height: 100%;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.wrap{
+flex-wrap: wrap;
+}
+
+.stay {
+    position: fixed;
+}
+
+.text-center {
+    text-align: center;
+    color: white;
+}
+
+.font-24px {
+    font-size: 24px;
+}
+.btn {
+color: black;
+
+}
+.no-margin {
+    margin: 0;
+}
+
+.no-top-margin {
+    margin-top: 0;
+}
+
+.margin-top-1em {
+    margin-top: 1em;
+}
+.center-center{
+    align-items: center;
+    justify-content: center;
+}
+.space-center{
+align-items: center;
+justify-content: space-between;
+}
+.mat-mdc-form-field-error{
+    margin: -15px;
+}
+
+

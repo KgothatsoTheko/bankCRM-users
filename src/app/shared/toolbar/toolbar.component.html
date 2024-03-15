@@ -1,0 +1,21 @@
+<mat-toolbar class="flex full-width white-bg">
+    <div class="white-bg flex space-between_center padding-20px-sides full-width">
+        <!-- Logo -->
+        <div class="flex start-center">
+            <div class="logo">
+                <img  (click)="home()" class="img" src="../../../assets/images/logo.png" alt="BankConnect-logo">
+            </div>
+        </div>
+       
+        <!-- right -->
+        <div class="flex gap-3em start-center">
+            <div class="flex gap-1em">
+                <img src="../../../assets/images/internet-banking-lock.svg" alt="internet-banking-lock">
+                <div class="line-height-1" (click)="LogIn()">
+                    <p >Online Banking</p>
+                    <p class="online-banking"><small>Sign In</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-toolbar>

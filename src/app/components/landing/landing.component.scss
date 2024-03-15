@@ -1,0 +1,113 @@
+
+body, p, h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.primary {
+    color: #ff9f68;;
+}
+
+.primary-bg {
+    background-color: #ff9f68;;
+}
+.primary-border {
+    border-color: #ff9f68 !important;
+}
+.nav-bg{
+    background-color: #1e313e;
+}
+
+.white {
+    color: #FFFFFF;
+}
+.white-bg {
+    background-color:  #FFFFFF;
+}
+
+
+.height-25px{
+height: 25px;
+}
+.height-45px {
+    height: 45px !important;
+}
+.full-width {
+    width: 100%;
+}
+
+.landing-section {
+    height: 60vh;
+    margin-top: 80px;
+    position: relative;
+    z-index: -1;
+    //  background-image: url('../../../assets/images/desktop/banking-fundamentals.webp'); 
+}
+
+
+
+.flex {
+    display: flex;
+}
+.center-center{
+    justify-content: center;
+    align-items: center;
+}
+
+.space-between_center {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.gap-1em {
+    gap: 1em;
+}
+.gap-2em {
+    gap: 2em;
+}
+.gap-3em {
+    gap: 3.5em;
+}
+
+.start-center {
+    align-items: center;
+}
+
+.padding-20px-sides {
+    padding: 0 20px;
+}
+
+.end_center {
+    justify-content: end;
+    align-items: center;
+}
+
+.btn {
+    height: 30px;
+    padding: 0 20px;
+    border-radius: 4px;
+    border: 2px solid;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.primary-btn:hover {
+    background-color: #eec877;
+    color:  #FFFFFF;
+    border-color: #6d42099d !important;
+}
+
+.font-4em {
+    font-size: 4em;
+}
+
+.margin-bottom-30px {
+    margin-bottom: 30px;
+}
+.a-center{
+    align-items: center;
+}
+.column{
+    flex-direction: column;
+}
+
