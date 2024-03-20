@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AngularStylesComponent } from './angular-styles.component';
+import { FeedbackComponent } from './feedback.component';
 
-describe('AngularStylesComponent', () => {
-  let component: AngularStylesComponent;
-  let fixture: ComponentFixture<AngularStylesComponent>;
+describe('FeedbackComponent', () => {
+  let component: FeedbackComponent;
+  let fixture: ComponentFixture<FeedbackComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AngularStylesComponent ]
+      declarations: [ FeedbackComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AngularStylesComponent);
+    fixture = TestBed.createComponent(FeedbackComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

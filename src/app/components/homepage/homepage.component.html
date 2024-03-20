@@ -1,0 +1,38 @@
+<div class="column flex gap-1em full-height">
+    <mat-toolbar class="space-between_center primary2">
+        <span class="pointer" (click)="logout()">Sign Out</span>
+        <h3>BankConnect</h3>
+        <button mat-icon-button>
+          <mat-icon>account_circle</mat-icon>
+        </button>
+      </mat-toolbar>
+    <h3 class="padding-1px">Account:</h3>
+    <mat-card class="full-width flex-1 flex row padding-10px box spacebetween-center">
+        <div class="gap-1em flex row">
+        <mat-icon>account_balance</mat-icon>
+        <h3 class="primary">Available Balance</h3>
+        </div>
+        <p><strong>R{{Amount}}</strong></p>
+    </mat-card>
+    <div class="padding-1px flex row">
+        <mat-icon>payment</mat-icon>
+        <h3 class="padding-1px">Transactions:</h3>
+    </div>
+    <div class="row flex gap-1em center-center">
+        <mat-card class="card gap-1em pointer" (click)="openAirtime()">
+            <mat-icon class="primary"> call</mat-icon>
+            <p>Buy prepaid mobile</p>
+        </mat-card>
+        <mat-card class="card gap-1em pointer" (click)="openElectricity()">
+            <mat-icon class="primary">flash_on</mat-icon>
+            <p>Buy electricity</p>
+        </mat-card>
+        <mat-card class="card gap-1em pointer" (click)="openFeedback()">
+            <mat-icon class="primary">assignment</mat-icon>
+            <p>Give Feedback</p>
+        </mat-card>
+    </div>
+    <app-footer></app-footer>
+</div>
+
+

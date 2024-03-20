@@ -11,49 +11,69 @@
         <br>
         
             <div class=" flex column gap-1em">
+                <div class="flex gap-1em row-1">
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Name</mat-label>
+                        <input matInput placeholder="e.g 8765430987087" formControlName="name">
+                        <mat-error *ngIf="signInForm.get('name')?.hasError('required')">
+                            <p class="flex gap-1em">First Name is<strong>required</strong></p>
+                        </mat-error>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" class="full-width">
+                        <mat-label>Surname</mat-label>
+                        <input matInput placeholder="e.g 8765430987087" formControlName="surname">
+                        <mat-error *ngIf="signInForm.get('surname')?.hasError('required')">
+                            <p class="flex gap-1em">Last Name is<strong>required</strong></p>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
                 <mat-form-field appearance="fill">
                     <mat-label>SA ID Number</mat-label>
-                    <input matInput placeholder="e.g 8765430987087" formControlName="idNo">
-                    <mat-error *ngIf="signInForm.controls['idNo'].hasError">
-                        <p class="flex gap-1em">ID Number field is <strong>Invalid</strong></p>
+                    <input matInput placeholder="e.g 8765430987087" formControlName="id" type="tel">
+                    <mat-error *ngIf="signInForm.get('id')?.hasError('required')">
+                        <p class="flex gap-1em">ID Number is<strong>required</strong></p>
                     </mat-error>
                 </mat-form-field>
-
+                <mat-form-field appearance="fill" class="full-width">
+                    <mat-label>Gender</mat-label>
+                    <mat-select formControlName = "gender">
+                      <mat-option *ngFor="let gender of genders" [value] = "gender">{{gender}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Cellphone Number</mat-label>
                     <input matInput placeholder="e.g 0712345679" formControlName="contact">
                     <mat-error *ngIf="signInForm.controls['contact'].invalid && signInForm.controls['contact'].hasError">
-                        <p class="flex gap-1em">Cellphone Number is<strong>Invalid</strong></p>
+                        <p class="flex gap-1em">Cellphone Number is<strong>required</strong></p>
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="fill">
                     <mat-label>Enter your email address</mat-label>
                     <input matInput placeholder="pat@example.com" formControlName="email">
                     <mat-error *ngIf="signInForm.controls['email'].invalid && signInForm.controls['email'].hasError">
-                        <p class="flex gap-1em">Email field is<strong>Invalid</strong></p>
+                        <p class="flex gap-1em">Email field is<strong>required</strong></p>
                     </mat-error>
                 </mat-form-field>
                <div class="flex gap-1em full-width">
                 <mat-form-field appearance="fill" class="full-width">
                     <mat-label>Create a Pin Code</mat-label>
-                    <input matInput placeholder="e.g 1234,0000" formControlName="pin">
+                    <input matInput placeholder="*******" formControlName="pin" type="password">
                     <mat-error *ngIf="signInForm.controls['pin'].invalid && signInForm.controls['pin'].hasError">
-                        <p class="flex gap-1em"> Pin is<strong>Invalid</strong></p>
+                        <p class="flex gap-1em"> Pin is<strong>required</strong></p>
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="fill" class="full-width">
                     <mat-label>Confirm your Pin Code</mat-label>
-                    <input matInput placeholder="*******" formControlName="pinConfirm">
+                    <input matInput placeholder="*******" formControlName="pinConfirm" type="password">
                     <mat-error *ngIf="signInForm.controls['pinConfirm'].value != signInForm.controls['pin'].value">
-                        <p class="flex gap-1em"> Pin doesnt <strong>Match</strong></p>
+                        <p class="flex gap-1em"> Pin doesn't <strong>Match</strong></p>
                     </mat-error>
                 </mat-form-field>
                </div>
             </div>
             <div class="flex space-center ">
-                <mat-checkbox >Remember Me?
-                </mat-checkbox>
-                <button mat-raised-button color="warn" (click)="submit()">Sign-in</button>
+                <p>Already have an account? <span class="sign" (click)="LogIn()">Sign In</span></p>
+                <button mat-raised-button color="warn" [disabled]="signInForm.invalid" (click)="submit()">Create Account</button>
             </div>
         </form>
     </div>

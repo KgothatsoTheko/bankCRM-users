@@ -1,0 +1,29 @@
+<mat-card>
+    <div class="flex center-center">
+        <h2>Buy Electricity</h2>
+    </div>
+    <form [formGroup]="electricityForm">
+          
+
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Enter Meter Number</mat-label>
+            <input type="tel" matInput formControlName="number" required>
+            <mat-error *ngIf="electricityForm.get('number')?.hasError('required')">
+                Cell Number is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Enter Amount</mat-label>
+            <input type="number" matInput formControlName="amount" maxlength="15" required>
+            <mat-error *ngIf="electricityForm.get('amount')?.hasError('required')">
+                Amount is required
+            </mat-error>
+        </mat-form-field>
+        <div class="flex gap-1em">
+            <div><button mat-raised-button class="btn-cancel" color="warn" (click)="cancel()">Cancel</button></div>
+            <div><button mat-raised-button class="btn-submit" color="primary" (click)="submit()" [disabled]="electricityForm.invalid">Submit</button></div>
+        </div>
+    </form>
+</mat-card>
+

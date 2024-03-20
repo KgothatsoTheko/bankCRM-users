@@ -1,0 +1,38 @@
+<mat-card>
+    <div class="flex center-center">
+        <h2>Buy Airtime</h2>
+    </div>
+    <form [formGroup]="airtimeForm">
+
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Enter Network Provider</mat-label>
+            <mat-select formControlName = "provider">
+              <mat-option *ngFor="let provider of providers" [value] = "provider">{{provider}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="airtimeForm.get('provider')?.hasError('required')">
+                Network Provider is required
+            </mat-error>
+          </mat-form-field>
+          
+
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Enter Number</mat-label>
+            <input type="number" matInput formControlName="number" required>
+            <mat-error *ngIf="airtimeForm.get('number')?.hasError('required')">
+                Cell Number is required
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+            <mat-label>Enter Amount</mat-label>
+            <input type="number" matInput formControlName="amount" required>
+            <mat-error *ngIf="airtimeForm.get('amount')?.hasError('required')">
+                Amount is required
+            </mat-error>
+        </mat-form-field>
+        <div class="flex gap-1em">
+            <div><button mat-raised-button class="btn-cancel" color="warn" (click)="cancel()">Cancel</button></div>
+            <div><button mat-raised-button class="btn-submit" color="primary" (click)="submit()" [disabled]="airtimeForm.invalid">Submit</button></div>
+        </div>
+    </form>
+</mat-card>

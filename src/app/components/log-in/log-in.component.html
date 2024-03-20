@@ -17,17 +17,17 @@
                             </mat-error>
                         </mat-form-field>                  
                         <mat-form-field appearance="fill">
-                            <mat-label>Password</mat-label>
-                            <input matInput placeholder="Enter your password" formControlName="password">
+                            <mat-label>Pin</mat-label>
+                            <input matInput placeholder="Enter your Pin" formControlName="pin" type="password">
                             <mat-error>
-                                <p  class="flex gap--1em">Password field is <strong> Invalid</strong> </p>
+                                <p  class="flex gap--1em">Pin field is <strong> Invalid</strong> </p>
                             </mat-error>
                         </mat-form-field>
                         
                     </div>
                     <div class="flex space-center ">
-                        <mat-checkbox >Remember Me?</mat-checkbox>
-                        <button mat-raised-button  color="warn" (click)="submit()" >Sign-in</button>
+                        <p>No account? <span class="sign" (click)="LogIn()">Open Account</span></p>
+                        <button mat-raised-button  color="warn" [disabled]="logInForm.invalid" (click)="submit()" >Sign-in</button>
                     </div>
                 </form>
             </div>

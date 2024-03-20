@@ -16,6 +16,17 @@
     height: 80%;
     margin: 60px;
 }
+
+.sign:hover {
+    cursor: pointer;
+    color: #ff9f69;
+    text-decoration: underline;
+}
+
+.row-1 {
+    flex-direction: row !important;
+}
+
 .main-sec{
     width: 80%;
    border-radius: 50px;
