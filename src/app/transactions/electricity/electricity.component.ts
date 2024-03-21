@@ -12,7 +12,7 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
 export class ElectricityComponent {
   electricityForm = new FormGroup({
     transactionId: new FormControl('trasactionID-'+ new Date().getTime()),
-    number: new FormControl('', Validators.required),
+    meterNo: new FormControl('', Validators.required),
     amount: new FormControl('', Validators.required)
 
   })
@@ -35,7 +35,7 @@ export class ElectricityComponent {
 
       console.log(formValue)
   
-      this.api.genericPost('/add-airtime', formValue).subscribe({
+      this.api.genericPost('/add-electricity', formValue).subscribe({
         next: (res: any) => {
           console.log(res);
         },

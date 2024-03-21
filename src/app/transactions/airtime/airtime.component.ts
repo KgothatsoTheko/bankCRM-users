@@ -3,6 +3,7 @@ import { FormControl, FormControlName, FormGroup, Validators } from '@angular/fo
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiServiceService } from 'src/app/services/api-service.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-airtime',
@@ -11,7 +12,10 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
 })
 export class AirtimeComponent {
 
+  balance!:number
+
   providers: string[] = ['Vodacom', 'Telkom', 'MTN', 'Cell-C']
+  
 
 
   airtimeForm = new FormGroup({
@@ -23,7 +27,10 @@ export class AirtimeComponent {
   })
 
   constructor(private matDialogRef: MatDialogRef<AirtimeComponent>, private api: ApiServiceService, private snackbar: MatSnackBar,
-    @Inject (MAT_DIALOG_DATA) private data:any) {}
+    @Inject (MAT_DIALOG_DATA) private data:any, private sharedService: SharedService) {
+
+      this.balance = this.sharedService.getAmount()
+    }
 
     cancel() {
       this.matDialogRef.close();
@@ -31,7 +38,6 @@ export class AirtimeComponent {
   
     submit() {
       let formValue = this.airtimeForm.value;
-      let amount = this.airtimeForm.controls['amount'].value;
   
       if (this.airtimeForm.invalid) {
         this.snackbar.open("fill in fields", "OK", { duration: 3000 })

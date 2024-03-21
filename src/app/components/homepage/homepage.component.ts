@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { SharedService } from 'src/app/services/shared.service';
 import { AirtimeComponent } from 'src/app/transactions/airtime/airtime.component';
 import { ElectricityComponent } from 'src/app/transactions/electricity/electricity.component';
 import { FeedbackComponent } from 'src/app/transactions/feedback/feedback.component';
@@ -10,17 +11,21 @@ import { FeedbackComponent } from 'src/app/transactions/feedback/feedback.compon
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss']
 })
-export class HomepageComponent {
+export class HomepageComponent{
 
-  constructor(public dialog: MatDialog, private router: Router) {}
+  constructor(public dialog: MatDialog, private router: Router, private sharedService: SharedService) {
+  }
 
-  Amount:number = 1000
+  
+
+  balance = 1000;
 
   openAirtime() {
     this.dialog.open(AirtimeComponent, {
       width: '35vw',
       maxWidth: '50vw'
     });
+    
   }
 
   openElectricity() {
@@ -31,7 +36,7 @@ export class HomepageComponent {
   }
 
   logout(){
-   this.router.navigate(['Landing'])
+   this.router.navigate(['/Landing'])
   }
 
   openFeedback() {
@@ -41,10 +46,6 @@ export class HomepageComponent {
     });
   }
 
-  // Subscribe to the amountSubmitted event emitted by AirtimeComponent
-  // dialogRef.componentInstance.amountSubmitted.subscribe((amount: number) => {
-    // Subtract the amount entered in the airtime form
-  //   this.Amount -= amount;
-  // });
+ 
 
 }

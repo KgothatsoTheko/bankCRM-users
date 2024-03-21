@@ -23,23 +23,18 @@ export class LogInComponent {
   submit(){
     console.log(this.logInForm)
 
-    if(this.logInForm.invalid) {
-      this.snackbar.open('Please fill in all fields', 'Ok', {duration: 3000})
-    }
-
-  this.api.genericPost('/SignIn', this.logInForm.value)
+  this.api.genericPost('/LogIn', this.logInForm.value)
       .subscribe({
         next: (res: any) => {
           console.log('res', res)
-          if (res._id) {
+          if (res) {
             this.snackbar.open('Login was successful', 'Ok', { duration: 3000 })
-          } else {
-            this.snackbar.open('Something went wrong ...', 'Ok', { duration: 3000 });
-          }
+            this.router.navigate(['/homepage']);
+          } 
         },
         error: (err: any) => console.log('Error', err),
         complete: () => { }
       });
-    this.router.navigate(['/homepage']);
+    
   }
 }

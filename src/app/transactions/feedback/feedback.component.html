@@ -1,1 +1,23 @@
-<p>feedback works!</p>
+<mat-card>
+    <div class="padding-10px">
+        <div class="flex center-center column">
+            <h2>Give FeedBack User App</h2>
+            <blockquote>Tell us can we impove the BankConnect user experience:</blockquote>
+        </div>
+        <form [formGroup]="feedbackForm">
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Message</mat-label>
+                <textarea matInput formControlName="message"></textarea>
+                <mat-error *ngIf="feedbackForm.get('message')?.hasError('required')">
+                    message is required
+                </mat-error>
+              </mat-form-field>
+            <div class="flex gap-1em">
+                <div><button mat-raised-button class="btn-cancel" color="warn" (click)="cancel()">Cancel</button></div>
+                <div><button mat-raised-button class="btn-submit" color="primary" (click)="submit()" [disabled]="feedbackForm.invalid">Submit</button></div>
+            </div>
+        </form>
+    </div>
+</mat-card>
+
+

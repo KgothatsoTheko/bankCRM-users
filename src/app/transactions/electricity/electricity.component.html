@@ -7,8 +7,8 @@
 
         <mat-form-field appearance="fill" class="full-width">
             <mat-label>Enter Meter Number</mat-label>
-            <input type="tel" matInput formControlName="number" required>
-            <mat-error *ngIf="electricityForm.get('number')?.hasError('required')">
+            <input type="meterNo" matInput formControlName="meterNo" required>
+            <mat-error *ngIf="electricityForm.get('meterNo')?.hasError('required')">
                 Cell Number is required
             </mat-error>
         </mat-form-field>
