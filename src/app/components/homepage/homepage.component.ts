@@ -3,8 +3,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { SharedService } from 'src/app/services/shared.service';
 import { AirtimeComponent } from 'src/app/transactions/airtime/airtime.component';
+import { DepositComponent } from 'src/app/transactions/deposit/deposit.component';
 import { ElectricityComponent } from 'src/app/transactions/electricity/electricity.component';
 import { FeedbackComponent } from 'src/app/transactions/feedback/feedback.component';
+import { WidthrawComponent } from 'src/app/transactions/widthraw/widthraw.component';
 
 @Component({
   selector: 'app-homepage',
@@ -14,11 +16,13 @@ import { FeedbackComponent } from 'src/app/transactions/feedback/feedback.compon
 export class HomepageComponent{
 
   constructor(public dialog: MatDialog, private router: Router, private sharedService: SharedService) {
+    this.user = this.sharedService.get('customers', 'session')
+  console.log(this.user.data.name)
   }
 
-  
+  user:any
 
-  balance = 1000;
+  
 
   openAirtime() {
     this.dialog.open(AirtimeComponent, {
@@ -26,6 +30,20 @@ export class HomepageComponent{
       maxWidth: '50vw'
     });
     
+  }
+
+  deposit() {
+    this.dialog.open(DepositComponent, {
+      width: '35vw',
+      maxWidth: '50vw'
+    });
+  }
+
+  widthraw() {
+    this.dialog.open(WidthrawComponent, {
+      width: '35vw',
+      maxWidth: '50vw'
+    });
   }
 
   openElectricity() {

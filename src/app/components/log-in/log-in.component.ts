@@ -11,8 +11,8 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
 })
 export class LogInComponent {
 
-  LogIn(){
-    this.router.navigate(['/SignIn']);
+  register(){
+    this.router.navigate(['/Register']);
   }
   
   constructor(private router: Router, private snackbar: MatSnackBar, private api: ApiServiceService){}
@@ -29,7 +29,9 @@ export class LogInComponent {
           console.log('res', res)
           if (res) {
             this.snackbar.open('Login was successful', 'Ok', { duration: 3000 })
-            this.router.navigate(['/homepage']);
+          sessionStorage.setItem('customers', JSON.stringify(res));
+            this.router.navigate(['/welcome'])
+
           } 
         },
         error: (err: any) => console.log('Error', err),

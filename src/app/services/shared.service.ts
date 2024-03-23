@@ -6,13 +6,9 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SharedService {
 
-  Amount!: number;
-  setAmount(data:number) {
-    this.Amount = data
-  }
-
-  getAmount() {
-    return this.Amount
+  get(key: string, sessionType: string): any {
+    let data = sessionType === 'session' ? sessionStorage.getItem(key) : localStorage.getItem(key);
+    return data ? JSON.parse(data) : data;
   }
 
   constructor() { }

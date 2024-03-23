@@ -1,0 +1,24 @@
+<mat-card>
+    <div class="padding-10px">
+        <div class="flex center-center">
+            <h2>Deposit</h2>
+        </div>
+        <form [formGroup]="depositForm">
+              
+    
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Enter Deposit Amount</mat-label>
+                <input type="number" matInput formControlName="balance" required>
+                <mat-error *ngIf="depositForm.get('balance')?.hasError('required')">
+                    Deposit Amount is required
+                </mat-error>
+            </mat-form-field>
+    
+            <div class="flex gap-1em">
+                <div><button mat-raised-button class="btn-cancel" color="warn" (click)="cancel()">Cancel</button></div>
+                <div><button mat-raised-button class="btn-submit" color="primary" (click)="submit()" [disabled]="depositForm.invalid">Submit</button></div>
+            </div>
+        </form>
+    </div>
+</mat-card>
+

@@ -27,6 +27,7 @@ export class SignInComponent {
     email:new FormControl('', [Validators.required,Validators.email]),
     pin:new FormControl('',[Validators.required]),
     pinConfirm:new FormControl('',[Validators.required]),
+    balance: new FormControl(0),
     rememberMe: new FormControl(''),
   })
   constructor(private snackbar: MatSnackBar, private router: Router, private api: ApiServiceService) { }
@@ -38,12 +39,18 @@ export class SignInComponent {
       this.snackbar.open('Please fill in all fields', 'Ok', {duration: 3000})
     }
 
+    if (this.signInForm.get('pin')?.value !== this.signInForm.get('pinConfirm')?.value) {
+      this.signInForm.get('pinConfirm')?.setErrors({ 'pattern': true });
+      return;
+    }
+
   this.api.genericPost('/SignIn', this.signInForm.value)
       .subscribe({
         next: (res: any) => {
           console.log('res', res)
           if (res._id) {
             this.snackbar.open('Customer successfully added', 'Ok', { duration: 3000 })
+            this.router.navigate(['/LogIn'])
           } else {
             this.snackbar.open('Something went wrong ...', 'Ok', { duration: 3000 });
           }
@@ -52,7 +59,6 @@ export class SignInComponent {
         complete: () => { }
       });
 
-  this.router.navigate(['/LogIn'])
 
 
   }

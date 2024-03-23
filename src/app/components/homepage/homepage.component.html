@@ -7,12 +7,16 @@
         </button>
       </mat-toolbar>
     <h3 class="padding-1px">Account:</h3>
+    <div class="flex gap-1em">
+        <button mat-raised-button color="primary" (click)="deposit()">Deposit</button>
+        <button mat-raised-button color="warn" (click)="widthraw()">Withdraw</button>
+    </div>
     <mat-card class="full-width flex-1 flex row padding-10px box spacebetween-center">
         <div class="gap-1em flex row">
         <mat-icon>account_balance</mat-icon>
         <h3 class="primary">Available Balance</h3>
         </div>
-        <p><strong>R{{balance}}</strong></p>
+        <p><strong>R{{user.data.balance}}</strong></p>
     </mat-card>
     <div class="padding-1px flex row">
         <mat-icon>payment</mat-icon>

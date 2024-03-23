@@ -11,7 +11,7 @@
                     <div class=" flex column gap-1em">
                         <mat-form-field appearance="fill">
                             <mat-label>Email Address</mat-label>
-                            <input matInput placeholder="e.g 8765430987087" formControlName="email">
+                            <input matInput placeholder="joedoe@gmail.com" formControlName="email">
                             <mat-error *ngIf=" logInForm.controls['email'].invalid">
                                 <p  class="flex gap--1em">Email Address field is <strong> Invalid</strong> </p>
                             </mat-error>
@@ -19,14 +19,14 @@
                         <mat-form-field appearance="fill">
                             <mat-label>Pin</mat-label>
                             <input matInput placeholder="Enter your Pin" formControlName="pin" type="password">
-                            <mat-error>
+                            <mat-error *ngIf="logInForm.controls['pin'].invalid && logInForm.controls['pin'].hasError">
                                 <p  class="flex gap--1em">Pin field is <strong> Invalid</strong> </p>
                             </mat-error>
                         </mat-form-field>
                         
                     </div>
                     <div class="flex space-center ">
-                        <p>No account? <span class="sign" (click)="LogIn()">Open Account</span></p>
+                        <p>No account? <span class="sign" (click)="register()">Open Account</span></p>
                         <button mat-raised-button  color="warn" [disabled]="logInForm.invalid" (click)="submit()" >Sign-in</button>
                     </div>
                 </form>

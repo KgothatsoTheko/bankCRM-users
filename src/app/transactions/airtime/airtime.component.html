@@ -13,10 +13,26 @@
                 <mat-error *ngIf="airtimeForm.get('provider')?.hasError('required')">
                     Network Provider is required
                 </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>For:</mat-label>
+                <mat-select formControlName = "numberOptions">
+                  <mat-option *ngFor="let numberOption of numberOptions" [value] = "numberOption">{{numberOption}}</mat-option>
+                </mat-select>
+                <mat-error *ngIf="airtimeForm.get('numberOptions')?.hasError('required')">
+                    Number Options is required
+                </mat-error>
               </mat-form-field>
+
+              <mat-form-field appearance="fill" class="full-width" *ngIf="airtimeForm.controls['numberOptions'].value === 'My Number'">
+                <mat-label>Your Number</mat-label>
+                <input type="number" matInput formControlName="number" readonly [value]="number">
+                
+            </mat-form-field>
               
     
-            <mat-form-field appearance="fill" class="full-width">
+            <mat-form-field appearance="fill" class="full-width" *ngIf="airtimeForm.controls['numberOptions'].value === 'Another Number'">
                 <mat-label>Enter Number</mat-label>
                 <input type="number" matInput formControlName="number" required>
                 <mat-error *ngIf="airtimeForm.get('number')?.hasError('required')">

@@ -14,14 +14,14 @@
                 <div class="flex gap-1em row-1">
                     <mat-form-field appearance="fill" class="full-width">
                         <mat-label>Name</mat-label>
-                        <input matInput placeholder="e.g 8765430987087" formControlName="name">
+                        <input matInput placeholder="First Name" formControlName="name">
                         <mat-error *ngIf="signInForm.get('name')?.hasError('required')">
                             <p class="flex gap-1em">First Name is<strong>required</strong></p>
                         </mat-error>
                     </mat-form-field>
                     <mat-form-field appearance="fill" class="full-width">
                         <mat-label>Surname</mat-label>
-                        <input matInput placeholder="e.g 8765430987087" formControlName="surname">
+                        <input matInput placeholder="Last Name" formControlName="surname">
                         <mat-error *ngIf="signInForm.get('surname')?.hasError('required')">
                             <p class="flex gap-1em">Last Name is<strong>required</strong></p>
                         </mat-error>
@@ -29,7 +29,7 @@
                 </div>
                 <mat-form-field appearance="fill">
                     <mat-label>SA ID Number</mat-label>
-                    <input matInput placeholder="e.g 8765430987087" formControlName="id" type="tel">
+                    <input matInput placeholder="e.g 9802135222056" formControlName="id" type="tel">
                     <mat-error *ngIf="signInForm.get('id')?.hasError('required')">
                         <p class="flex gap-1em">ID Number is<strong>required</strong></p>
                     </mat-error>
@@ -57,16 +57,21 @@
                <div class="flex gap-1em full-width">
                 <mat-form-field appearance="fill" class="full-width">
                     <mat-label>Create a Pin Code</mat-label>
-                    <input matInput placeholder="*******" formControlName="pin" type="password">
-                    <mat-error *ngIf="signInForm.controls['pin'].invalid && signInForm.controls['pin'].hasError">
-                        <p class="flex gap-1em"> Pin is<strong>required</strong></p>
+                    <input matInput placeholder="****" formControlName="pin" type="password" maxlength="4">
+                    <mat-error *ngIf="signInForm.get('pin')?.hasError('required')">
+                    </mat-error>
+                    <mat-error *ngIf="signInForm.get('pin')?.hasError('minlength')">
+                        <p class="flex gap-1em">Pin should at least have 4 charectors</p>
                     </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="fill" class="full-width">
                     <mat-label>Confirm your Pin Code</mat-label>
-                    <input matInput placeholder="*******" formControlName="pinConfirm" type="password">
-                    <mat-error *ngIf="signInForm.controls['pinConfirm'].value != signInForm.controls['pin'].value">
-                        <p class="flex gap-1em"> Pin doesn't <strong>Match</strong></p>
+                    <input matInput placeholder="****" formControlName="pinConfirm" type="password" maxlength="4">
+                    <mat-error *ngIf="signInForm.get('pinConfirm')?.hasError('required')">
+                        <p class="flex gap-1em">Confrim Pin is<strong>required</strong></p>
+                    </mat-error>
+                    <mat-error *ngIf="signInForm.get('pinConfirm')?.hasError('pattern')">
+                        <p class="flex gap-1em">Your pin doesn't match!</p>
                     </mat-error>
                 </mat-form-field>
                </div>

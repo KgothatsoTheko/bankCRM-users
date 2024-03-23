@@ -17,6 +17,9 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { AirtimeComponent } from './transactions/airtime/airtime.component';
 import { ElectricityComponent } from './transactions/electricity/electricity.component';
 import { FeedbackComponent } from './transactions/feedback/feedback.component';
+import { DepositComponent } from './transactions/deposit/deposit.component';
+import { WidthrawComponent } from './transactions/widthraw/widthraw.component';
+import { WelcomeMessageComponent } from './components/welcome-message/welcome-message.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { FeedbackComponent } from './transactions/feedback/feedback.component';
     HomepageComponent,
     AirtimeComponent,
     ElectricityComponent,
-    FeedbackComponent
+    FeedbackComponent,
+    DepositComponent,
+    WidthrawComponent,
+    WelcomeMessageComponent
   ],
   imports: [
     BrowserModule,

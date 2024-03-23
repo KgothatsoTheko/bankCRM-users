@@ -15,21 +15,26 @@ export class AirtimeComponent {
   balance!:number
 
   providers: string[] = ['Vodacom', 'Telkom', 'MTN', 'Cell-C']
+  numberOptions: string[] = ['My Number', 'Another Number']
   
 
+  number = 614227501
 
   airtimeForm = new FormGroup({
     transactionId: new FormControl('trasactionID-'+ new Date().getTime()),
     provider: new FormControl('', Validators.required),
-    number: new FormControl('', Validators.required),
+    numberOptions: new FormControl('', Validators.required),
+    number: new FormControl(this.number, Validators.required),
     amount: new FormControl('', Validators.required)
-
+    
   })
+
+ 
 
   constructor(private matDialogRef: MatDialogRef<AirtimeComponent>, private api: ApiServiceService, private snackbar: MatSnackBar,
     @Inject (MAT_DIALOG_DATA) private data:any, private sharedService: SharedService) {
 
-      this.balance = this.sharedService.getAmount()
+      
     }
 
     cancel() {

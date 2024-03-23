@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class LandingComponent {
   constructor(private router: Router){}
-  signIn(){
-  this.router.navigate(['/SignIn']);
+  register(){
+  this.router.navigate(['/Register']);
   }
 }

@@ -1,0 +1,23 @@
+<mat-card>
+    <div class="padding-10px">
+        <div class="flex center-center">
+            <h2>Withdraw</h2>
+        </div>
+        <form [formGroup]="withdrawForm">
+              
+    
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Enter Withdraw Amount</mat-label>
+                <input type="number" matInput formControlName="balance" required>
+                <mat-error *ngIf="withdrawForm.get('balance')?.hasError('required')">
+                    Withdraw Amount is required
+                </mat-error>
+            </mat-form-field>
+    
+            <div class="flex gap-1em">
+                <div><button mat-raised-button class="btn-cancel" color="warn" (click)="cancel()">Cancel</button></div>
+                <div><button mat-raised-button class="btn-submit" color="primary" (click)="submit()" [disabled]="withdrawForm.invalid">Submit</button></div>
+            </div>
+        </form>
+    </div>
+</mat-card>
