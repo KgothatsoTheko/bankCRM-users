@@ -3,7 +3,7 @@
         <span class="pointer" (click)="logout()">Sign Out</span>
         <h3>BankConnect</h3>
         <button mat-icon-button>
-          <mat-icon>account_circle</mat-icon>
+          <h3>{{user.data.name.slice(0,1).toUpperCase()}}{{user.data.surname.slice(0,1).toUpperCase()}}</h3>
         </button>
       </mat-toolbar>
     <h3 class="padding-1px">Account:</h3>
