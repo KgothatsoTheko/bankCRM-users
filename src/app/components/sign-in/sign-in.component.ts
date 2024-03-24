@@ -21,7 +21,7 @@ export class SignInComponent {
   signInForm = new FormGroup({
     name:new FormControl('',[Validators.required]),
     surname:new FormControl('',[Validators.required]),
-    id:new FormControl('',[Validators.required]),
+    ID:new FormControl('',[Validators.required]),
     gender: new FormControl('', [Validators.required]),
     contact:new FormControl('',[Validators.required]),
     email:new FormControl('', [Validators.required,Validators.email]),

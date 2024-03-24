@@ -4,6 +4,11 @@
             <h2>Buy Airtime</h2>
         </div>
         <form [formGroup]="airtimeForm">
+
+            <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Customer Name</mat-label>
+                <input type="text" matInput formControlName="customerName" readonly [value]="userName" >
+            </mat-form-field>
     
             <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Enter Network Provider</mat-label>

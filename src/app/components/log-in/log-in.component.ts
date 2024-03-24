@@ -29,7 +29,7 @@ export class LogInComponent {
           console.log('res', res)
           if (res) {
             this.snackbar.open('Login was successful', 'Ok', { duration: 3000 })
-          sessionStorage.setItem('customers', JSON.stringify(res));
+            sessionStorage.setItem('customers', JSON.stringify(res));
             this.router.navigate(['/welcome'])
 
           } 

@@ -19,23 +19,36 @@ export class AirtimeComponent {
   
 
   number = 614227501
+  user:any
+  userName:any
+  airtimeForm: FormGroup;
 
-  airtimeForm = new FormGroup({
-    transactionId: new FormControl('trasactionID-'+ new Date().getTime()),
-    provider: new FormControl('', Validators.required),
-    numberOptions: new FormControl('', Validators.required),
-    number: new FormControl(this.number, Validators.required),
-    amount: new FormControl('', Validators.required)
-    
-  })
 
+  
+  
  
 
   constructor(private matDialogRef: MatDialogRef<AirtimeComponent>, private api: ApiServiceService, private snackbar: MatSnackBar,
     @Inject (MAT_DIALOG_DATA) private data:any, private sharedService: SharedService) {
+      this.user = this.sharedService.get('customers', 'session')
+      console.log(this.user.data.email)
 
+      const name = this.user.data.name + " " + this.user.data.surname 
+      this.userName = name
+
+      this.airtimeForm = new FormGroup({
+        customerName: new FormControl(this.userName),
+        transactionId: new FormControl('trasactionID-'+ new Date().getTime()),
+        provider: new FormControl('', Validators.required),
+        numberOptions: new FormControl('', Validators.required),
+        number: new FormControl(this.number, Validators.required),
+        amount: new FormControl('', Validators.required)
+        
+      })
       
     }
+
+
 
     cancel() {
       this.matDialogRef.close();
@@ -62,7 +75,7 @@ export class AirtimeComponent {
 
       this.snackbar.open('Submitted successfully', "OK", { duration: 3000 });
 
-    this.matDialogRef.close()
+      this.matDialogRef.close()
 
     }
   }

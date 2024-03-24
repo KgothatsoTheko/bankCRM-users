@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiServiceService } from 'src/app/services/api-service.service';
+import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
   selector: 'app-feedback',
@@ -11,11 +12,21 @@ import { ApiServiceService } from 'src/app/services/api-service.service';
 })
 export class FeedbackComponent {
 
-  feedbackForm = new FormGroup({
-    message: new FormControl('')
-  })
-  constructor(private snackbar: MatSnackBar, private api: ApiServiceService, private matDialogRef: MatDialogRef<FeedbackComponent> ) {
-    
+  feedbackForm: FormGroup
+  user:any
+  userName:any
+  
+  constructor(private snackbar: MatSnackBar, private api: ApiServiceService, private sharedService: SharedService, private matDialogRef: MatDialogRef<FeedbackComponent> ) {
+
+    this.user = this.sharedService.get('customers', 'session')
+
+    const name = this.user.data.name + " " + this.user.data.surname 
+      this.userName = name
+
+      this.feedbackForm = new FormGroup({
+        customerName: new FormControl(this.userName),
+        message: new FormControl('', Validators.required),
+      })
   }
 
   cancel() {

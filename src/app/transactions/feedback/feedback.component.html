@@ -6,6 +6,10 @@
         </div>
         <form [formGroup]="feedbackForm">
             <mat-form-field appearance="fill" class="full-width">
+                <mat-label>Customer Name</mat-label>
+                <input type="text" matInput formControlName="customerName" readonly [value]="userName" >
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="full-width">
                 <mat-label>Message</mat-label>
                 <textarea matInput formControlName="message"></textarea>
                 <mat-error *ngIf="feedbackForm.get('message')?.hasError('required')">

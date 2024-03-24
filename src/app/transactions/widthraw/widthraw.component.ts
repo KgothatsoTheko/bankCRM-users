@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiServiceService } from 'src/app/services/api-service.service';
+import { BalanceService } from 'src/app/services/balance.service';
 import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
@@ -13,7 +14,7 @@ import { SharedService } from 'src/app/services/shared.service';
 export class WidthrawComponent {
   user:any
   constructor(private matDialogRef: MatDialogRef<WidthrawComponent>, private api: ApiServiceService, private snackbar: MatSnackBar,
-    @Inject (MAT_DIALOG_DATA) private data:any, private sharedService: SharedService) {
+    @Inject (MAT_DIALOG_DATA) private data:any, private sharedService: SharedService, private balanceService: BalanceService) {
       this.user = this.sharedService.get('customers', 'session')
       console.log(this.user.data.email)
     }
@@ -37,23 +38,22 @@ export class WidthrawComponent {
   
       console.log(formValue)
       const withdrawAmount = formValue.balance;
-  
-      // this.api.genericPost('/withdraw/' + this.user.data.email, {withdrawAmount}).subscribe({
-      //   next: (res: any) => {
-      //     console.log('Withdraw successful:', res);
-      //     this.snackbar.open(`Withdraw successful: ${res}`, "OK", { duration: 3000 })
 
-      //   },
-      //   error: (error: any) => {
-      //     console.error('Error withdraw:', error);
-      //     this.snackbar.open(`Error widthdraw: ${error}`, "OK", { duration: 3000 })
-      //   },
-      //   complete: () => { }
-      // });
-  
-      // this.snackbar.open('Withdraw Submitted successfully', "OK", { duration: 3000 });
-  
+    this.api.genericPost('/withdraw-customerbalance/' + this.user.data.email, {withdrawAmount}).subscribe({
+      next: (res: any) => {
+        console.log('Withdraw successful:', res);
+        const newBalance = res.balance;
+        this.balanceService.setBalance(newBalance);
+      },
+      error: (error: any) => {
+        console.error('Error withdrawing task:', error);
+      },
+      complete: () => { }
+    });
+
+    this.snackbar.open('Withdraw Submitted successfully', "OK", { duration: 3000 });
+
     this.matDialogRef.close()
-  
-    }
+
+  }
 }

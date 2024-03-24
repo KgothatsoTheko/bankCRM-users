@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { BalanceService } from 'src/app/services/balance.service';
 import { SharedService } from 'src/app/services/shared.service';
 import { AirtimeComponent } from 'src/app/transactions/airtime/airtime.component';
 import { DepositComponent } from 'src/app/transactions/deposit/deposit.component';
@@ -13,14 +14,21 @@ import { WidthrawComponent } from 'src/app/transactions/widthraw/widthraw.compon
   templateUrl: './homepage.component.html',
   styleUrls: ['./homepage.component.scss']
 })
-export class HomepageComponent{
+export class HomepageComponent implements OnInit{
 
-  constructor(public dialog: MatDialog, private router: Router, private sharedService: SharedService) {
+  constructor(public dialog: MatDialog, private router: Router, private sharedService: SharedService, private balanceService: BalanceService) {
     this.user = this.sharedService.get('customers', 'session')
   console.log(this.user.data.name)
   }
 
   user:any
+
+  ngOnInit() {
+    this.balanceService.balance$.subscribe(balance => {
+      // Update the balance in the component
+      this.user.data.balance = balance;
+    });
+  }
 
   
 

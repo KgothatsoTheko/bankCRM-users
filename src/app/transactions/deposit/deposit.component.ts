@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ApiServiceService } from 'src/app/services/api-service.service';
+import { BalanceService } from 'src/app/services/balance.service';
 import { SharedService } from 'src/app/services/shared.service';
 
 @Component({
@@ -13,7 +14,7 @@ import { SharedService } from 'src/app/services/shared.service';
 export class DepositComponent {
   user:any
 constructor(private matDialogRef: MatDialogRef<DepositComponent>, private api: ApiServiceService, private snackbar: MatSnackBar,
-  @Inject (MAT_DIALOG_DATA) private data:any, private sharedService: SharedService) {
+  @Inject (MAT_DIALOG_DATA) private data:any, private sharedService: SharedService, private balanceService: BalanceService) {
     this.user = this.sharedService.get('customers', 'session')
     console.log(this.user.data.email)
   }
@@ -41,6 +42,9 @@ constructor(private matDialogRef: MatDialogRef<DepositComponent>, private api: A
     this.api.genericPost('/update-customerbalance/' + this.user.data.email, {depositAmount}).subscribe({
       next: (res: any) => {
         console.log('Deposit successful:', res);
+        console.log(res.balance)
+        const newBalance = res.balance;
+        this.balanceService.setBalance(newBalance);
       },
       error: (error: any) => {
         console.error('Error depositing task:', error);
