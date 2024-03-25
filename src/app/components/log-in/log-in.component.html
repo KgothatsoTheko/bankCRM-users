@@ -18,7 +18,7 @@
                         </mat-form-field>                  
                         <mat-form-field appearance="fill">
                             <mat-label>Pin</mat-label>
-                            <input matInput placeholder="Enter your Pin" formControlName="pin" type="password">
+                            <input matInput placeholder="Enter your Pin" formControlName="pin" type="password" maxlength="4">
                             <mat-error *ngIf="logInForm.controls['pin'].invalid && logInForm.controls['pin'].hasError">
                                 <p  class="flex gap--1em">Pin field is <strong> Invalid</strong> </p>
                             </mat-error>

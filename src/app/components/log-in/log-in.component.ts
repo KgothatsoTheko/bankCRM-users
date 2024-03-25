@@ -31,10 +31,10 @@ export class LogInComponent {
             this.snackbar.open('Login was successful', 'Ok', { duration: 3000 })
             sessionStorage.setItem('customers', JSON.stringify(res));
             this.router.navigate(['/welcome'])
-
           } 
         },
-        error: (err: any) => console.log('Error', err),
+        error: (err: any) => this.snackbar.open('Invalid Email or PIN', 'Ok', { duration: 3000 }),
+        
         complete: () => { }
       });
     
